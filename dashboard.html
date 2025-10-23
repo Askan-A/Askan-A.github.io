@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCity — Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: url('assets/bg.png') no-repeat center center fixed; background-size: cover; }
+  </style>
+</head>
+<body class="bg-black/70 text-white min-h-screen backdrop-blur-sm">
+  <div class="max-w-5xl mx-auto p-6">
+    <header class="flex justify-between items-center mb-8">
+      <h1 class="text-2xl font-bold text-yellow-400">⚡ SmartCity Dashboard</h1>
+      <button onclick="logout()" class="text-sm px-3 py-2 bg-yellow-500 text-black rounded-lg">Logout</button>
+    </header>
+    <div id="userInfo" class="mb-8"></div>
+    <div id="transactions" class="space-y-4"></div>
+  </div>
+  <script>
+    const user = JSON.parse(localStorage.getItem('sc_user') || 'null');
+    if(!user) location.href = 'meter-login.html';
+    document.getElementById('userInfo').innerHTML = `
+      <p><strong>Name:</strong> ${user.name}</p>
+      <p><strong>Customer ID:</strong> ${user.customerId}</p>
+    `;
+    function logout(){ localStorage.removeItem('sc_user'); location.href='index.html'; }
+  </script>
+</body>
+</html>
