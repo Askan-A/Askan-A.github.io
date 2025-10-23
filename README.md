@@ -1,1 +1,0 @@
-Smart city electricity bill
